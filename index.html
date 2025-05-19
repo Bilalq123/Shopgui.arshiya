@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AAB SHOP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: pink;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbow 5s linear infinite;
+    }
+
+    @keyframes rainbow {
+      0% { background-position: 0%; }
+      100% { background-position: 100%; }
+    }
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .shop {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .item {
+      border: 2px solid #00aaff;
+      padding: 10px 20px;
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      color: blue;
+    }
+    .item:hover {
+      background-color: #e0f7ff;
+    }
+    .cart {
+      margin-top: 20px;
+    }
+    .cart-item {
+      margin: 5px 0;
+    }
+    #total {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+      </style>
+    
+  </style>
+</head>
+<body>
+  <h1>AAB SHOP</h1>  <div class="section">
+    <h2>Fruits</h2>
+    <div class="shop">
+      <div class="item" onclick="addToCart('Apple', 100)">Apple - 1kg - ₹100</div>
+      <div class="item" onclick="addToCart('Mango', 150)">Mango - 1kg - ₹150</div>
+      <div class="item" onclick="addToCart('Watermelon', 80)">Watermelon - 1kg - ₹80</div>
+      <div class="item" onclick="addToCart('Pomegranate', 120)">Pomegranate - 1kg - ₹120</div>
+      <div class="item" onclick="addToCart('Banana', 50)">Banana - 1kg - ₹50</div>
+    </div>
+  </div>  <div class="section">
+    <h2>Vegetables</h2>
+    <div class="shop">
+      <div class="item" onclick="addToCart('Tomato', 80)">Tomato - 1kg - ₹80</div>
+      <div class="item" onclick="addToCart('Onion', 90)">Onion - 1kg - ₹90</div>
+      <div class="item" onclick="addToCart('Carrot', 80)">Carrot - 1kg - ₹80</div>
+      <div class="item" onclick="addToCart('Potato', 100)">Potato - 1kg - ₹100</div>
+      <div class="item" onclick="addToCart('Beetroot', 120)">Beetroot - 1kg - ₹120</div>
+      <div class="item" onclick="addToCart('Cucumber', 100)">Cucumber - 1kg - ₹100</div>
+      <div class="item" onclick="addToCart('Chilli', 20)">Chilli - 1kg - ₹20</div>
+      <div class="item" onclick="addToCart('Pumpkin', 100)">Pumpkin - 1kg - ₹100</div>
+      <div class="item" onclick="addToCart('Broccoli', 150)">Broccoli - 1kg - ₹150</div>
+      <div class="item" onclick="addToCart('Lady Finger', 150)">Lady Finger - 1kg - ₹150</div>
+      <div class="item" onclick="addToCart('Cauliflower', 150)">Cauliflower - 1kg - ₹150</div>
+    </div>
+  </div>  <div class="section">
+    <h2>More</h2>
+    <div class="shop">
+      <div class="item" onclick="addToCart('Milk', 30)">Milk - ₹30</div>
+      <div class="item" onclick="addToCart('Butter', 150)">Butter - ₹150</div>
+      <div class="item" onclick="addToCart('Cheese', 100)">Cheese - ₹100</div>
+      <div class="item" onclick="addToCart('Curd', 30)">Curd - ₹30</div>
+      <div class="item" onclick="addToCart('Chocolate', 20)">Chocolate - ₹20</div>
+      <div class="item" onclick="addToCart('Fresh Cream', 150)">Fresh Cream - ₹150</div>
+      <div class="item" onclick="addToCart('Sugar', 50)">Sugar - ₹50</div>
+      <div class="item" onclick="addToCart('Corn Flour', 75)">Corn Flour - 1kg - ₹75</div>
+      <div class="item" onclick="addToCart('Maida', 75)">Maida - 1kg - ₹75</div>
+      <div class="item" onclick="addToCart('Biscuit', 10)">Biscuit - ₹10</div>
+      <div class="item" onclick="addToCart('Bun Butter Jam', 20)">Bun Butter Jam - ₹20</div>
+      <div class="item" onclick="addToCart('Wheat Flour', 90)">Wheat Flour - 1kg - ₹90</div>
+      <div class="item" onclick="addToCart('Chilly Powder', 10)">Chilly Powder - ₹10</div>
+      <div class="item" onclick="addToCart('Turmeric Powder', 10)">Turmeric Powder - ₹10</div>
+      <div class="item" onclick="addToCart('Ice Cream', 50)">Ice Cream - ₹50</div>
+      <div class="item" onclick="addToCart('Sweet', 40)">Sweet - ₹40</div>
+      <div class="item" onclick="addToCart('Rice', 100)">Rice - 1kg - ₹100</div>
+    </div>
+<div class="cart" id="cart"></div>
+
+  <div class="total">
+    Total: ₹<span id="total">0</span>
+  </div>
+
+  <div class="buttons">
+    <button class="reset-btn" onclick="resetCart()">Reset Cart</button>
+    <button class="submit-btn" onclick="submitCart()">Submit</button>
+  </div>
+
+  <script>
+    let cart = {};
+    let total = 0;
+
+    function addToCart(name, price) {
+      if (!cart[name]) {
+        cart[name] = { price: price, quantity: 1 };
+      } else {
+        cart[name].quantity++;
+      }
+      total += price;
+      updateCartDisplay();
+    }
+
+    function removeItem(name) {
+      if (cart[name]) {
+        total -= cart[name].price * cart[name].quantity;
+        delete cart[name];
+        updateCartDisplay();
+      }
+    }
+
+    function resetCart() {
+      cart = {};
+      total = 0;
+      updateCartDisplay();
+    }
+
+    function submitCart() {
+      if (total === 0) {
+        alert("Cart is empty!");
+        return;
+      }
+      window.location.href = "thankyou.html"; // You can create this page separately
+    }
+
+
+    function updateCartDisplay() {
+      const cartDiv = document.getElementById("cart");
+      cartDiv.innerHTML = "";
+
+      for (let item in cart) {
+        const line = cart[item];
+        const lineTotal = line.price * line.quantity;
+
+        cartDiv.innerHTML += `
+          <div class="cart-item">
+            <span>${item} ₹${line.price} × ${line.quantity} = ₹${lineTotal}</span>
+            <button onclick="removeItem('${item}')">Clear</button>
+          </div>
+        `;
+      }
+
+      document.getElementById("total").innerText = total;
+    }
+  </script>
+  <div style="margin-top: 20px;">
+  <button onclick="window.location.href='gpay.html'">gpay</button>
+</div>
+</body>
+</html>

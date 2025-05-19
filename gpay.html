@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GPay Style Payment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: purple;
+      text-align: center;
+      padding: 50px;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      width: 250px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: blue;
+    }
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #333;
+    }
+    #success {
+      font-size: 24px;
+      color: green;
+      margin-top: 30px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Payment Page</h2>
+
+  <input type="text" id="username" placeholder="Enter Your Name" /><br />
+  <input type="tel" id="phone" placeholder="Enter Phone Number" maxlength="10" /><br />
+  <input type="number" id="amount" placeholder="Enter Paid Amount (e.g. 1900)" /><br />
+  
+  <button onclick="confirmPayment()">Pay</button>
+
+  <div id="success">Payment Successful!</div>
+
+  <script>
+    function confirmPayment() {
+      const name = document.getElementById('username').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const amount = document.getElementById('amount').value.trim();
+
+      if (!name || !phone.match(/^\d{10}$/) || isNaN(amount) || Number(amount) <= 0) {
+        alert("Please fill all fields correctly.");
+        return;
+      }
+
+      // Hide all input fields and button
+      document.getElementById('username').style.display = "none";
+      document.getElementById('phone').style.display = "none";
+      document.getElementById('amount').style.display = "none";
+      document.querySelector('button').style.display = "none";
+
+      // Show success message
+      document.getElementById('success').innerText = `₹${amount} Paid Successfully by ${name}`;
+      document.getElementById('success').style.display = "block";
+    }
+  </script>
+  
+
+</body>
+</html>
